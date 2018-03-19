@@ -64,3 +64,10 @@ Although the authors don't include any discussion of a stacked CNN (with both sm
 - [Video Classification](http://ieeexplore.ieee.org/document/7552971/)
 
 ## Data
+
+The data here consists of over 150,000 sentences from Wikipedia's talk page comments. The comments have been labeled by human moderators as toxic, severely toxic, obscene, hateful, insulting, and/or threatening. For more information about how the dataset was collected, see [the original paper](https://arxiv.org/pdf/1610.08914.pdf).
+
+|severe_toxic|obscene|threat|insult|identity_hate|severe_toxic|0|1|0|1|0|1|0|1|0|1|toxic|0|1|
+|--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+|144277|0|143754|523|144248|29|143744|533|144174|103|
+|13699|1595|7368|7926|14845|449|7950|7344|13992|1302|
