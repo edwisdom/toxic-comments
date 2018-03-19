@@ -57,4 +57,3 @@ for other_col in no_clean.columns[1:]:
     corr.append(ct)
 cross_tabs = pd.concat(corr, axis=1, keys=no_clean.columns[1:])
 table = cross_tabs.to_html()
-print(table)

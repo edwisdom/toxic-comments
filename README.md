@@ -67,7 +67,69 @@ Although the authors don't include any discussion of a stacked CNN (with both sm
 
 The data here consists of over 150,000 sentences from Wikipedia's talk page comments. The comments have been labeled by human moderators as toxic, severely toxic, obscene, hateful, insulting, and/or threatening. For more information about how the dataset was collected, see [the original paper](https://arxiv.org/pdf/1610.08914.pdf).
 
-|severe_toxic|obscene|threat|insult|identity_hate|severe_toxic|0|1|0|1|0|1|0|1|0|1|toxic|0|1|
-|--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-|144277|0|143754|523|144248|29|143744|533|144174|103|
-|13699|1595|7368|7926|14845|449|7950|7344|13992|1302|
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">severe_toxic</th>
+      <th colspan="2" halign="left">obscene</th>
+      <th colspan="2" halign="left">threat</th>
+      <th colspan="2" halign="left">insult</th>
+      <th colspan="2" halign="left">identity_hate</th>
+    </tr>
+    <tr>
+      <th>severe_toxic</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>toxic</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>144277</td>
+      <td>0</td>
+      <td>143754</td>
+      <td>523</td>
+      <td>144248</td>
+      <td>29</td>
+      <td>143744</td>
+      <td>533</td>
+      <td>144174</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13699</td>
+      <td>1595</td>
+      <td>7368</td>
+      <td>7926</td>
+      <td>14845</td>
+      <td>449</td>
+      <td>7950</td>
+      <td>7344</td>
+      <td>13992</td>
+      <td>1302</td>
+    </tr>
+  </tbody>
+</table>
