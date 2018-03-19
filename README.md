@@ -55,12 +55,12 @@ For more on RNNs, read:
 
 ### Recurrent Convolutional Neural Networks
 
-In [this paper from 2015] (http://www.deeplearningitalia.com/wp-content/uploads/2017/12/Dropbox_Recurrent-Convolutional-Neural-Networks-for-Text-Classification.pdf), the authors find that adding a convolutional layer to an RNN outperforms CNNs and RNNs alone for text classification tasks. The authors argue that while the recurrent part captures long-distance connections between the data (e.g. the beginning and end of sentence), the convolutional part captures phrase-level patterns. By adding a max-pooling layer afterward, a CNN can identify the most important words or phrases.
+In [this paper from 2015](http://www.deeplearningitalia.com/wp-content/uploads/2017/12/Dropbox_Recurrent-Convolutional-Neural-Networks-for-Text-Classification.pdf), the authors find that adding a convolutional layer to an RNN outperforms CNNs and RNNs alone for text classification tasks. The authors argue that while the recurrent part captures long-distance connections between the data (e.g. the beginning and end of sentence), the convolutional part captures phrase-level patterns. By adding a max-pooling layer afterward, a CNN can identify the most important words or phrases.
 
 Although the authors don't include any discussion of a stacked CNN (with both small and large window sizes in order to capture both short- and long-distance patterns), other researchers have similarly found RCNNs to be more accurate for a number of classification tasks:
 
 - [Scene Labeling](http://proceedings.mlr.press/v32/pinheiro14.pdf)
-- [Object Recognition] (https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Liang_Recurrent_Convolutional_Neural_2015_CVPR_paper.pdf)
+- [Object Recognition](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Liang_Recurrent_Convolutional_Neural_2015_CVPR_paper.pdf)
 - [Video Classification](http://ieeexplore.ieee.org/document/7552971/)
 
 ## Data
