@@ -45,7 +45,7 @@ for rect, label in zip(rects, labels):
     height = rect.get_height()
     ax.text(rect.get_x() + rect.get_width()/2, height + 5, label, ha='center', va='bottom')
 
-# plt.savefig('imbalance.png')
+plt.savefig('imbalance.png')
 
 # Remove the clean column from the dataframe
 no_clean=train.iloc[:,2:-1]
@@ -57,3 +57,6 @@ for other_col in no_clean.columns[1:]:
     corr.append(ct)
 cross_tabs = pd.concat(corr, axis=1, keys=no_clean.columns[1:])
 table = cross_tabs.to_html()
+table_file = open("crosstab.html", "w")
+table_file.write(table)
+table_file.close() 
