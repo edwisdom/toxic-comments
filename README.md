@@ -194,4 +194,10 @@ Second, I migrated the network to my GPU by downloading CUDA and Tensorflow-GPU.
 
 ### Dropout 
 
+I wanted to check if I could tune the model's performance by increasing dropout before experimenting with the network's architecture. Almost all of these efforts, done alone, actually lowered the model accuracy.
+
+- Embedding Layer Dropout to 0.2 -- Loss: 0.0469, Accuracy: 0.9827
+- Final Layer Dropout to 0.3 -- Loss: 0.0482, Accuracy: 0.9831
+- LSTM Dropout to 0.3
+
 
