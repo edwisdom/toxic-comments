@@ -6,7 +6,7 @@ import numpy as np
 
 import scipy.stats as ss
 
-import seaborn as sb
+import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec 
 import matplotlib_venn as venn 
@@ -35,7 +35,7 @@ train['clean']=(rowsums==0)
 # Plot class imbalance
 x=train.iloc[:,2:].sum()
 plt.figure(figsize=(10,5))
-ax= sb.barplot(x.index, x.values)
+ax= sns.barplot(x.index, x.values)
 plt.title("Number of Sentences Per Class in Training Data")
 plt.ylabel('Frequency', fontsize=12)
 plt.xlabel('Class ', fontsize=12)
@@ -59,4 +59,5 @@ cross_tabs = pd.concat(corr, axis=1, keys=no_clean.columns[1:])
 table = cross_tabs.to_html()
 table_file = open("crosstab.html", "w")
 table_file.write(table)
-table_file.close() 
+table_file.close()
+

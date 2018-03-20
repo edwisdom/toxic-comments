@@ -143,3 +143,26 @@ As the following table shows, there is significant overlap between "toxic" and t
     </tr>
   </tbody>
 </table>
+
+## Model
+
+Here, I will outline some of the major model parameters that I iteratively tweaked, along with the effect on the model's accuracy rate.
+
+### Baseline Model
+
+I began with a simple model:
+- Embedding layer with an input of pre-trained 50-dimensional vectors (GloVe 6B.50D)
+- Bidirectional LSTM of size 50, with dropout 0.1
+- FC layer of size 25, with dropout 0.1
+- Output FC layer of size 6 (one per class)
+
+I used a batch size of 32 and the Adam optimizer, which is an alternative to stochastic gradient descent. Each parameter of the network has a separate learning rate, which are continually adapted as the network learns. For more on the Adam optimizer, read [here](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/). 
+
+**Keras Output:**
+
+```
+Epoch 2/2
+143613/143613 [==============================] - 378s 3ms/step - loss: 0.0447 - acc: 0.9832 - val_loss: 0.0472 - val_acc: 0.9824
+
+```
+
