@@ -77,4 +77,69 @@ Note that there are a lot more "clean" comments (marked as 0 for all 6 classes o
 
 As the following table shows, there is significant overlap between "toxic" and the other classes. For example, the sentences labeled "severely toxic" are a subset of those labeled "toxic."
 
-![alt text](https://github.com/edwisdom/toxic-comments/blob/master/crosstab.html)
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">severe_toxic</th>
+      <th colspan="2" halign="left">obscene</th>
+      <th colspan="2" halign="left">threat</th>
+      <th colspan="2" halign="left">insult</th>
+      <th colspan="2" halign="left">identity_hate</th>
+    </tr>
+    <tr>
+      <th>severe_toxic</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>toxic</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>144277</td>
+      <td>0</td>
+      <td>143754</td>
+      <td>523</td>
+      <td>144248</td>
+      <td>29</td>
+      <td>143744</td>
+      <td>533</td>
+      <td>144174</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13699</td>
+      <td>1595</td>
+      <td>7368</td>
+      <td>7926</td>
+      <td>14845</td>
+      <td>449</td>
+      <td>7950</td>
+      <td>7344</td>
+      <td>13992</td>
+      <td>1302</td>
+    </tr>
+  </tbody>
+</table>
