@@ -88,7 +88,7 @@ As the following table shows, there is significant overlap between "toxic" and t
       <th colspan="2" halign="left">identity_hate</th>
     </tr>
     <tr>
-      <th>severe_toxic</th>
+      <th></th>
       <th>0</th>
       <th>1</th>
       <th>0</th>
