@@ -225,6 +225,7 @@ Second, I used larger pre-trained embedding vectors (from 50 dimensions to 300).
 Third, and perhaps most importantly, I added a convolutional layer of size 64, with a window size of 3, in between the recurrent and FC layers for both the LSTM and GRU network. Although I found RCNNs rather late in my model iteration process, I've explained them above in the [Background Research section](https://github.com/edwisdom/toxic-comments#recurrent-convolutional-neural-networks).
 
 **LSTM - Loss: 0.0412, Accuracy: 0.9842**
+
 **GRU  - Loss: 0.0414, Accuracy: 0.9842**
 
 Finally, I decided to stack another convolutional layer of size 64, with window size 6, before the FC layer for both networks. I also tried to add a FC layer of size 64 before the output layer. Both of these slightly improved the model, although the GRU benefitted more from the additional convolution, whereas the LSTM benefitted more from the added FC layer.
