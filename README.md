@@ -161,8 +161,6 @@ I used a batch size of 32 and the Adam optimizer, which is an alternative to sto
 **Keras Output:**
 
 ```
-Epoch 2/2
-143613/143613 [==============================] - 378s 3ms/step - loss: 0.0447 - acc: 0.9832 - val_loss: 0.0472 - val_acc: 0.9824
-
+loss: 0.0447 - acc: 0.9832 - val_loss: 0.0472 - val_acc: 0.9824
 ```
 
