@@ -72,3 +72,9 @@ The data here consists of over 150,000 sentences from Wikipedia's talk page comm
 Note that there are a lot more "clean" comments (marked as 0 for all 6 classes of toxicity) than there are toxic. Moreover, "toxic" is by far the most common label. These class imbalances mean that we should be wary of methods like logistic regression, which would favor the majority class. Since we want to detect toxic online comments, misclassifying most comments as clean would defeat the purpose, even though it might improve model accuracy. Read [here](http://www.chioka.in/class-imbalance-problem/) for more on the class imbalance problem.
 
 ![alt text](https://github.com/edwisdom/toxic-comments/blob/master/imbalance.png "Class Imbalance in Training Data")
+
+### Multiple Correlated Labels
+
+As the following table shows, there is significant overlap between "toxic" and the other classes. For example, the sentences labeled "severely toxic" are a subset of those labeled "toxic."
+
+![alt text](https://github.com/edwisdom/toxic-comments/blob/master/crosstab.html)
