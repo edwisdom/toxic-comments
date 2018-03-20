@@ -164,3 +164,34 @@ I used a batch size of 32 and the Adam optimizer, which is an alternative to sto
 loss: 0.0447 - acc: 0.9832 - val_loss: 0.0472 - val_acc: 0.9824
 ```
 
+The model had trained for 2 epochs. This output from Keras shows loss and accuracy on the training data used, and the 10% held out for cross-validation. Since the out-of-sample predictions best indicate how well the model generalizes, the val_loss and val_acc will be the measures that I report for future model iterations.
+
+### Batch Size / Epochs
+
+First, I recognized that I could train for multiple epochs. The network eventually overfits if we add too many epochs, so first, we can add a callback to stop early. In this code, if val_loss doesn't improve after 3 epochs, the model stops training. 
+
+```python
+es = EarlyStopping(monitor='val_loss',
+                   min_delta=0,
+                   patience=3,
+                   verbose=0, mode='auto')
+```
+
+Moreover, we can save the best model with the following callback:
+
+```python
+best_model = 'models/model_filename.h5'
+checkpoint = ModelCheckpoint(best_model, 
+							 monitor='val_loss', 
+							 verbose=0, 
+							 save_best_only=True, mode='auto')
+model.fit(X_t, y, batch_size=batch_size, epochs=epochs, callbacks=[es, checkpoint], validation_split=0.1)
+```
+
+Second, I migrated the network to my GPU by downloading CUDA and Tensorflow-GPU. This allowed me to change the batch size to 1024 and train my network much faster.
+
+**Loss: 0.0454, Accuracy: 0.9832**
+
+### Dropout 
+
+
