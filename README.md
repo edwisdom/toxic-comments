@@ -153,6 +153,7 @@ Here, I will outline some of the major model parameters that I iteratively tweak
 I began with a simple model:
 - Embedding layer with an input of pre-trained 50-dimensional vectors (GloVe 6B.50D)
 - Bidirectional LSTM of size 50, with dropout 0.1
+- Pooling layer (average + max concatenated)
 - FC layer of size 25, with dropout 0.1
 - Output FC layer of size 6 (one per class)
 
@@ -182,9 +183,9 @@ Moreover, we can save the best model with the following callback:
 ```python
 best_model = 'models/model_filename.h5'
 checkpoint = ModelCheckpoint(best_model, 
-							 monitor='val_loss', 
-							 verbose=0, 
-							 save_best_only=True, mode='auto')
+                             monitor='val_loss', 
+                             verbose=0, 
+                             save_best_only=True, mode='auto')
 model.fit(X_t, y, batch_size=batch_size, epochs=epochs, callbacks=[es, checkpoint], validation_split=0.1)
 ```
 
@@ -198,6 +199,40 @@ I wanted to check if I could tune the model's performance by increasing dropout 
 
 - Embedding Layer Dropout to 0.2 -- Loss: 0.0469, Accuracy: 0.9827
 - Final Layer Dropout to 0.3 -- Loss: 0.0482, Accuracy: 0.9831
-- LSTM Dropout to 0.3
+- LSTM Dropout to 0.3 -- Loss: 0.0473, Accuracy: 0.9827
+- Recurrent Dropout to 0.3 -- Loss: 0.0465, Accuracy: 0.9831
+
+These results make some sense in hindsight, since the network size is relatively small. As [this paper found](https://pdfs.semanticscholar.org/3061/db5aab0b3f6070ea0f19f8e76470e44aefa5.pdf), applying dropout in the middle and after LSTM layers tends to worsen performance. This, of course, didn't explain why increasing dropout in the embedding layer (which comes before the LSTM) worsened performance.
+
+As I found in this [paper on CNNs](https://arxiv.org/pdf/1411.4280.pdf), dropping random weights doesn't actually help when there is spatial correlation in the feature maps. Since natural language also exhibits spatial/sequential correlation, spatial dropout would be a much better choice, since it drops out entire feature maps. After adding a spatial dropout of 0.2 before the LSTM layer, the network finally improved.
+
+**Loss: 0.0452, Accuracy: 0.9834**
+
+### Architecture
+
+First, I experimented with a different RNN cell. I simply reconstructed the previous network's architecture, but replaced LSTM cells with GRU cells. GRU layers only have two gates, a reset and update gate -- whereas the update gate encodes the previous inputs ("memory"), the reset gate combines the input with this memory. 
+
+Whereas the LSTM can capture long-distance connections due to its hidden state, this may not be necessary for identifying toxicity, since a comment is likely to be toxic throughout. For more on the difference between GRUs and LSTMs, read [here](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/). For an evaluation of the two on NLP tasks, see [this paper](https://arxiv.org/pdf/1412.3555v1.pdf). 
+
+Surprisingly, the GRU performed comparably to the LSTM without any further tuning.
+
+**Loss: 0.0450, Accuracy: 0.9832**
+
+Second, I used larger pre-trained embedding vectors (from 50 dimensions to 300). Furthermore, I increased the number of words that the model was using for each comment in increments of 50, going up from 100 originally to 300 once model performance stopped improving. This simple change improved performance significantly for the LSTM.
+
+**Loss: 0.0432, Accuracy: 0.09838**
+
+Third, and perhaps most importantly, I added a convolutional layer of size 64, with a window size of 3, in between the recurrent and FC layers for both the LSTM and GRU network. Although I found RCNNs rather late in my model iteration process, I've explained them above in the [Background Research section](https://github.com/edwisdom/toxic-comments#recurrent-convolutional-neural-networks).
+
+**LSTM - Loss: 0.0412, Accuracy: 0.9842**
+**GRU  - Loss: 0.0414, Accuracy: 0.9842**
+
+Finally, I decided to stack another convolutional layer of size 64, with window size 6, before the FC layer for both networks. I also tried to add a FC layer of size 64 before the output layer. Both of these slightly improved the model, although the GRU benefitted more from the additional convolution, whereas the LSTM benefitted more from the added FC layer.
+
+
+
+
+
+
 
 
