@@ -255,6 +255,7 @@ Here are some things that I did not get to tune that would make for interesting 
 2. Initializing different learning rates and setting a decay rate
 3. Different activation functions -- Tanh vs. PreLu vs. ReLu
 4. More convolutional layers with larger window sizes to capture long-distance connections
+5. Preprocessing comments using NLP techniques such as lemmatization, removing stop words, etc.
 
 ## Credits
 
