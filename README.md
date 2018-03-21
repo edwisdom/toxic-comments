@@ -231,9 +231,34 @@ Third, and perhaps most importantly, I added a convolutional layer of size 64, w
 Finally, I decided to stack another convolutional layer of size 64, with window size 6, before the FC layer for both networks. I also tried to add a FC layer of size 64 before the output layer. Both of these slightly improved the model, although the GRU benefitted more from the additional convolution, whereas the LSTM benefitted more from the added FC layer.
 
 
+| Loss By Model | CNN Layer | FC Layer |
+|:-------------:|:---------:|:--------:|
+| GRU           | 0.0406    | 0.0408   |
+| LSTM          | 0.0411    | 0.0402   |
 
 
+Ensembled together, the two best-performing networks here reach **98.48% accuracy**.
 
+### Other Things I Learned That Don't Deserve a Whole Section 
 
+- Learning Rate Optimizers: For my data and model, Adam vastly outperformed both Adadelta, Adagrad, and RMSProp. I include a more thorough comparison of the optimizers below, from Suki Lau on Towards Data Science.
 
+![alt text](https://cdn-images-1.medium.com/max/800/1*OjcTfMw6dmOmP4lRE7Ud-A.jpeg)
+
+- Alternative Embeddings: All the figures I present here use the GloVe vectors, but I also tried to use pre-trained FastText vectors of the same size (300D), and the network performed comparably. 
+
+## Future Work
+
+Here are some things that I did not get to tune that would make for interesting results:
+
+1. Using only max-pooling layers vs. using only average-pooling layers vs. using both
+2. Initializing different learning rates and setting a decay rate
+3. Different activation functions -- Tanh vs. PreLu vs. ReLu
+4. More convolutional layers with larger window sizes to capture long-distance connections
+
+## Credits
+
+I would like to thank Prof. Liping Liu, Daniel Dinjian, and Nathan Watts for thinking through problems with me and helping me learn the relevant technologies faster. 
+
+I got the data for this model from a [Kaggle competition](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge), and I was helped greatly by [this exploratory data analysis by Jagan Gupta](https://www.kaggle.com/jagangupta/stop-the-s-toxic-comments-eda).
 
